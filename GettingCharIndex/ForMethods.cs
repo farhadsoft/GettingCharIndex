@@ -6,14 +6,57 @@ namespace GettingCharIndex
     {
         public static int GetIndexOfChar(string str, char value)
         {
-            // TODO #1. Analyze the implementation of "GetLastIndexOfChar(string, char)" method to see how "for" loop works, and implement the method using the "for" loop statement.
-            throw new NotImplementedException();
+            if (str is null)
+            {
+                throw new ArgumentNullException(nameof(str));
+            }
+
+            for (int i = 0; i < str.Length; i++)
+            {
+                if (str[i] == value)
+                {
+                    return i;
+                }
+            }
+
+            return -1;
         }
 
         public static int GetIndexOfChar(string str, char value, int startIndex, int count)
         {
-            // TODO #2. Analyze the implementation of "GetLastIndexOfChar(string, char, int, int)" method to see how "for" loop works, and implement the method using the "for" loop statement.
-            throw new NotImplementedException();
+            if (str is null)
+            {
+                throw new ArgumentNullException(nameof(str));
+            }
+
+            if (startIndex < 0)
+            {
+                throw new ArgumentOutOfRangeException(nameof(startIndex), "startIndex is less than zero");
+            }
+
+            if (startIndex > str.Length)
+            {
+                throw new ArgumentOutOfRangeException(nameof(startIndex), "startIndex is greater than str.Length");
+            }
+
+            if (count < 0)
+            {
+                throw new ArgumentOutOfRangeException(nameof(count), "count is less than zero");
+            }
+
+            for (int i = 0; i < count; i++)
+            {
+                if (str[startIndex] == value)
+                {
+                    return startIndex;
+                }
+                else
+                {
+                    startIndex++;
+                }
+            }
+
+            return -1;
         }
 
         public static int GetLastIndexOfChar(string str, char value)
